@@ -2,8 +2,8 @@ package com.example.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.AppDatabase
-import com.example.data.CompetitionsDao
+import com.example.data.persistence.db.AppDatabase
+import com.example.data.persistence.db.competition.CompetitionsDao
 import com.example.data.remote.api.ApiService
 import com.example.data.remote.datasource.ApiDataSource
 import com.example.data.remote.datasource.ApiDataSourceImpl

@@ -44,7 +44,8 @@ object Versions {
     val gradle = "3.5.3"
     val gson = "2.8.5"
     val junit = "4.12"
-    val kotlin = "1.3.61"
+    //val kotlin = "1.3.61"
+    val kotlin = "1.3.72"
     val lifecycle = "2.1.0"
     val minSdk = 23
     val legacyVersion = "1.0.0"

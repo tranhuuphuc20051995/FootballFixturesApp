@@ -49,4 +49,16 @@ interface ApiService {
     fun getTablesByCompetition(@Path("id") id: Long,
                                @Query("standingType") standingType: String)
             : Single<DataStandingResponse>
+
+
+
+    //Using coroutine
+
+//    @GET("matches")
+//    @Headers("X-Auth-Token: $API_KEY")
+//    fun getAllMatches(@Query("dateFrom") dateFrom: String,
+//                      @Query("dateTo") dateTo: String)
+//            : Single<DataMatchResponse>
+//
+
 }
