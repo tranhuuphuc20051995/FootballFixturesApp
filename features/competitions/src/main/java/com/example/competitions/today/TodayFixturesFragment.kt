@@ -72,7 +72,7 @@ class TodayFixturesFragment : BaseFragment() {
     private fun getTodayMatch(date: String) {
         disposable = hasInternetConnection().doOnSuccess {
             if (it)
-                viewModel.getAllMatches(date).observe(viewLifecycleOwner, Observer { result ->
+                viewModel.getAllMatchesCoroutine(date).observe(viewLifecycleOwner, Observer { result ->
                     when(result.status) {
                         Resource.Status.LOADING -> { println("Loading") }
                         Resource.Status.ERROR -> { println("Error") }

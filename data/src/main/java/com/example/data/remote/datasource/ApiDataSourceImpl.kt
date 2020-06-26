@@ -1,8 +1,10 @@
 package com.example.data.remote.datasource
 
-import com.example.data.local.mapper.map
+import com.example.common.base.Result
 import com.example.data.models.*
 import com.example.data.remote.api.ApiService
+import com.example.data.remote.utils.safeApiCall
+import com.example.domain.entities.DomainEntities
 import io.reactivex.Single
 
 class ApiDataSourceImpl (private val apiService: ApiService): ApiDataSource {
@@ -30,4 +32,13 @@ class ApiDataSourceImpl (private val apiService: ApiService): ApiDataSource {
     override fun getPlayers(id: Long): Single<DataPlayerResponse> {
         return apiService.getTeamById(id)
     }
+
+    //Coroutine
+    /**
+     * Here is where the Response from your api call is converted to Result for use
+     */
+    override suspend fun getAllMatchesCoroutine(date: String): Result<DomainEntities.MatchResponse> {
+        return safeApiCall(call = { apiService.getAllMatchesCoroutine(date, date) })
+    }
+
 }

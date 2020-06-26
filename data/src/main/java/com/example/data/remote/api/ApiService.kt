@@ -2,12 +2,10 @@ package com.example.data.remote.api
 
 import com.example.data.BuildConfig.API_KEY
 import com.example.data.models.*
+import com.example.domain.entities.DomainEntities
 import io.reactivex.Single
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -50,15 +48,18 @@ interface ApiService {
                                @Query("standingType") standingType: String)
             : Single<DataStandingResponse>
 
-
-
     //Using coroutine
 
-//    @GET("matches")
-//    @Headers("X-Auth-Token: $API_KEY")
-//    fun getAllMatches(@Query("dateFrom") dateFrom: String,
-//                      @Query("dateTo") dateTo: String)
-//            : Single<DataMatchResponse>
-//
+    /**
+     * As you can see we returned Response<DomainEntities.MatchResponse> and not DataMatchResponse in data
+     * This is cause we can't map the coroutine data like we do in RxJava
+     * Also note the keyword suspend and Response
+     * suspend is what make this a coroutine call Response is retrofit response class
+     */
+    @GET("matches")
+    @Headers("X-Auth-Token: $API_KEY")
+    suspend fun getAllMatchesCoroutine(@Query("dateFrom") dateFrom: String,
+                      @Query("dateTo") dateTo: String)
+            : Response<DomainEntities.MatchResponse>
 
 }

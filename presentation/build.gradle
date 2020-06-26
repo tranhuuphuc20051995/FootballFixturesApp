@@ -33,4 +33,7 @@ dependencies {
     implementation Libraries.rxJava
     implementation Libraries.rxJavaAndroid
     implementation Libraries.rxJavaKotlin
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 }
